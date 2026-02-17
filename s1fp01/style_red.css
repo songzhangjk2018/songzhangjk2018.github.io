@@ -101,3 +101,9 @@ td {
   font-size: 28px;
   font-family: Arial, sans-serif;
 }
+.arrow {
+  width: 80px;        /* change this to scale */
+  height: auto;
+  margin-top: 25px;
+  cursor: pointer;
+}
