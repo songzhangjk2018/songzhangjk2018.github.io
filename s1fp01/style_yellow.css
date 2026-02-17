@@ -37,3 +37,9 @@ body {
   cursor: pointer;
   font-family: Arial, sans-serif;
 }
+.arrow {
+  width: 80px;        /* change this to scale */
+  height: auto;
+  margin-top: 30px;
+  cursor: pointer;
+}
