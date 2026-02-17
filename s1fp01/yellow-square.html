@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spongebob</title>
+  <link rel="stylesheet" href="style_yellow.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="spongebob.png" class="sponge">
+
+    <p id="spongeText" class="fake-link">
+      Who lives in a pineapple under the sea?
+    </p>
+  </div>
+
+  <audio id="spongeSound" src="Spongebob.mp3"></audio>
+
+  <script>
+    const text = document.getElementById("spongeText");
+    const sound = document.getElementById("spongeSound");
+
+    text.addEventListener("click", () => {
+      sound.currentTime = 0;
+      sound.play();
+    });
+  </script>
+
+</body>
+</html>
