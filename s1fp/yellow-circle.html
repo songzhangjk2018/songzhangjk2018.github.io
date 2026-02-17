@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pacman</title>
+  <link rel="stylesheet" href="style_yellow.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="Pacman.png" class="pacman">
+
+    <p id="pacmanText" class="fake-link">
+      No Diet. Just Dots...
+    </p>
+  </div>
+
+  <audio id="pacmanSound" src="Pacman.mp3"></audio>
+
+  <script>
+    const text = document.getElementById("pacmanText");
+    const sound = document.getElementById("pacmanSound");
+
+    text.addEventListener("click", () => {
+      sound.currentTime = 0;
+      sound.play();
+    });
+  </script>
+
+</body>
+</html>

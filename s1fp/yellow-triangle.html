@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angry Birds</title>
+  <link rel="stylesheet" href="style_yellow.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="Angry-birds.png" class="angry">
+
+    <p id="angryText" class="fake-link">
+      Bad Day? Throw a Bird!
+    </p>
+  </div>
+
+  <audio id="angrySound" src="Wee.mp3"></audio>
+
+  <script>
+    const text = document.getElementById("angryText");
+    const sound = document.getElementById("angrySound");
+
+    text.addEventListener("click", () => {
+      sound.currentTime = 0;
+      sound.play();
+    });
+  </script>
+
+</body>
+</html>
