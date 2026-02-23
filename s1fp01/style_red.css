@@ -107,3 +107,30 @@ td {
   margin-top: 25px;
   cursor: pointer;
 }
+/* Make the table cell positionable */
+.logo-cell a{
+  position: relative;
+  display: block;
+}
+
+/* SVG is hidden by default */
+.red-logo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;   /* adjust to match your circle size */
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* keeps link clickable */
+}
+
+/* When hovering the red cell */
+.logo-cell:hover .circle_table{
+  opacity: 0; /* hide the circle */
+}
+
+.logo-cell:hover .red-logo{
+  opacity: 1; /* show the SVG */
+}
