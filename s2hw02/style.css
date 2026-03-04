@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background */
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Diver locked to bottom 20% of IMAGE */
+.diver {
+  position: absolute;
+
+  /* 80% from top = bottom 20% zone */
+  top: 95%;
+  left: 90%;
+
+  transform: translate(-50%, -50%);
+
+  width: 18%;
+  height: auto;
+
+  pointer-events: none;
+  z-index: 2;
+}
