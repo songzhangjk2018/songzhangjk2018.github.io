@@ -1,3 +1,5 @@
+/* ================= RESET ================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,36 +8,142 @@
 
 html, body {
   height: 100%;
+  background: black;
 }
+
+/* ================= CONTROL PANEL ================= */
+
+:root {
+
+  /* Diver position */
+  --diver-x: 90%;
+  --diver-y: 90%;
+  --diver-size: 18%;
+
+  /* Glow */
+  --glow-color: rgba(0,200,255,0.8);
+  --glow-size: 20px;
+
+  /* Bubble spawn position (relative to diver) */
+  --bubble-x: 0.2;
+  --bubble-y: 0.3;
+
+  /* SpongeBob controls */
+  --spongebob-x: 3%;
+  --spongebob-y: 1%;
+  --spongebob-size: 35%;
+}
+
+/* ================= LAYOUT ================= */
 
 .scene {
-  position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Background */
+.image-wrapper {
+  position: relative;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
 .bg {
-  position: absolute;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+
+  max-width: 100vw;
+  max-height: 100vh;
+
+  object-fit: contain;
+
+  transition: opacity .3s ease;
 }
 
-/* Diver locked to bottom 20% of IMAGE */
+/* ================= DIVER ================= */
+
 .diver {
+
   position: absolute;
 
-  /* 80% from top = bottom 20% zone */
-  top: 95%;
-  left: 90%;
+  left: var(--diver-x);
+  top: var(--diver-y);
+
+  width: var(--diver-size);
 
   transform: translate(-50%, -50%);
 
-  width: 18%;
-  height: auto;
+  cursor: pointer;
+
+  transition: filter .3s ease, transform .3s ease;
+}
+
+.diver:hover {
+
+  filter:
+  drop-shadow(0 0 var(--glow-size) var(--glow-color))
+  drop-shadow(0 0 calc(var(--glow-size)*2) var(--glow-color));
+
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* ================= BUBBLES ================= */
+
+.bubble-container {
+
+  position: absolute;
+  inset: 0;
 
   pointer-events: none;
-  z-index: 2;
+}
+
+.bubble {
+
+  position: absolute;
+
+  background: white;
+  border-radius: 50%;
+
+  opacity: .9;
+
+  animation: rise ease-out forwards;
+}
+
+@keyframes rise {
+
+  0%{
+    transform: translate(0,0) scale(.5);
+    opacity:.9;
+  }
+
+  100%{
+    transform: translate(-30px,-120px) scale(1.4);
+    opacity:0;
+  }
+}
+
+/* ================= SPONGEBOB ================= */
+
+.spongebob {
+
+  position: absolute;
+
+  left: var(--spongebob-x);
+  bottom: var(--spongebob-y);
+
+  width: var(--spongebob-size);
+
+  display: none;
+
+  cursor: pointer;
+
+  transition: transform .2s ease;
+}
+
+.spongebob:hover{
+  transform: scale(1.05);
 }
