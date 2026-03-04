@@ -25,8 +25,8 @@ html, body {
   --glow-size: 20px;
 
   /* Bubble spawn position (relative to diver) */
-  --bubble-x: 0.2;
-  --bubble-y: 0.3;
+  --bubble-x: 0.1;
+  --bubble-y: 0.2;
 
   /* SpongeBob controls */
   --spongebob-x: 3%;
