@@ -39,13 +39,13 @@ function showInstruction(num) {
 
     const instructions = {
         1: ["1. Be the 1st one to stamp your feet!",
-            "The first who stamp feet goes one step forward, and the rest shall go one step forward with single leg jump."],
+            "The first one who stamp feet moves one step forward with a single-leg jump. Everyone else stays in place."],
 
         2: ["2. Be the 1st one to cover your eyes!",
-            "The first who covers eyes goes one step forward, and the rest shall go one step forward with their eyes shut."],
+            "The first one who covers their eyes moves one step forward with their eyes closed. Everyone else stays in place."],
 
         3: ["3. Be the 1st one to squat down!",
-            "The first who squat down goes one step forward, and the rest shall duck walk one step forward."],
+            "The first one who squat down moves one step forward with a duck walk. Everyone else stays in place."],
 
         4: ["4. Y’all, one step forward!",
             "All players move one step forward normally."],
@@ -53,8 +53,8 @@ function showInstruction(num) {
         5: ["5. Y’all, one step back!",
             "All players move one step back normally."],
 
-        6: ["6. Y’all, two step back!",
-            "All players move two step back normally."]
+        6: ["6. Y’all, two steps back!",
+            "All players move two steps back normally."]
     };
 
     title.innerText = instructions[num][0];
