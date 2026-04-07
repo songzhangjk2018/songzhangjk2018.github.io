@@ -53,8 +53,8 @@ function showInstruction(num) {
         5: ["5. Y’all, one step back!",
             "All players move one step back normally."],
 
-        6: ["6. Y’all, two steps back!",
-            "All players move two steps back normally."]
+        6: ["6. The last player, one step forward!",
+            "The last player move one step forward normally."]
     };
 
     title.innerText = instructions[num][0];
