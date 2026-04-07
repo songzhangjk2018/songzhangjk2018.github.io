@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'Pixel';
+    src: url('Pixel.otf');
+}
+
+@font-face {
+    font-family: 'Clock';
+    src: url('Clock.ttf');
+}
+
+
+body {
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+}
+
+/* Game container */
+#game {
+    text-align: center;
+}
+
+/* Titles */
+.title {
+    font-family: 'Pixel';
+    font-size: 36px;
+    margin-bottom: 20px; /
+}
+
+.subtitle {
+    font-family: 'Aptos', sans-serif;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Dice */
+#dice {
+    width: 120px;
+    cursor: pointer;
+}
+
+/* Instructions */
+#instruction-title {
+    font-family: 'Pixel';
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+#instruction-body {
+    font-family: 'Aptos', sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Timer */
+#timer {
+    font-family: 'Clock';
+    font-size: 42px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+   
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    color: white;
+}
+
+
+#playAgain {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    font-family: 'Pixel';
+    font-size: 28px;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
