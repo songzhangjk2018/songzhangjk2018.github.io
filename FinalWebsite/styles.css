@@ -90,3 +90,10 @@ button {
   text-decoration: underline;
   font-size: 18px;
 }
+
+.no-link {
+  display: block;
+  margin: 8px 0;
+  font-size: 18px;
+  color: black;
+}

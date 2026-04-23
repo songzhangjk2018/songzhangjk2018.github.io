@@ -2,87 +2,122 @@ const loader = document.getElementById("loader");
 const refreshBtn = document.getElementById("refreshBtn");
 const catalogue = document.getElementById("catalogue");
 
-/* DATA */
+/* ALL ASSIGNMENTS */
 const windowsData = [
-  {
-    text: "Section 1, Assignment 1",
-    link: "https://codepen.io/Song-Zhang-the-solid/pen/OPXmqYG"
-  },
-  {
-    text: "Section 1, Assignment 2",
-    link: "https://codepen.io/Song-Zhang-the-solid/pen/EayXqEo"
-  },
-  {
-    text: "Section 1, Final Project",
-    link: "https://songzhangjk2018.github.io/s1fp01/test.html"
-  }
+  { text: "Section 1, Assignment 1", link: "https://codepen.io/Song-Zhang-the-solid/pen/OPXmqYG" },
+  { text: "Section 1, Assignment 2", link: "https://codepen.io/Song-Zhang-the-solid/pen/EayXqEo" },
+  { text: "Section 1, Final Project", link: "https://songzhangjk2018.github.io/s1fp01/test.html" },
+
+  { text: "Section 2, Assignment 1", link: "https://kolydic.github.io/artweb/webring/" },
+  { text: "Section 2, Assignment 2", link: "https://songzhangjk2018.github.io/s2hw02/test" },
+  { text: "Section 2, Final Project", link: "https://editor.p5js.org/songzhangjk2018/sketches/zN-wt1bef" },
+
+  { text: "Section 3, Assignment 1", link: "https://songzhangjk2018.github.io/S3A1/" },
+  { text: "Section 3, Assignment 2", link: "https://dumrong1.github.io/tool/index.html" },
+
+  { text: "Section 3, Final Project", link: null },
+  { text: "Reading Response", link: null }
 ];
 
-/* WINDOW SIZE (must match CSS roughly) */
+/* WINDOW SIZE */
 const WIN_W = 280;
 const WIN_H = 180;
-const GAP = 20;
 
-/* GENERATE GRID POSITIONS */
-function generatePositions(count) {
-  const positions = [];
+/* SAFE ZONE (center area containing link + GO) */
+const SAFE_W = 180;
+const SAFE_H = 80;
 
-  const cols = Math.floor(window.innerWidth / (WIN_W + GAP));
-  const rows = Math.floor(window.innerHeight / (WIN_H + GAP));
+/* store safe zones */
+let placedZones = [];
 
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      positions.push({
-        top: r * (WIN_H + GAP),
-        left: c * (WIN_W + GAP)
-      });
-    }
-  }
-
-  // shuffle positions so it still feels random
-  for (let i = positions.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [positions[i], positions[j]] = [positions[j], positions[i]];
-  }
-
-  return positions.slice(0, count);
+/* check overlap between rectangles */
+function isOverlapping(a, b) {
+  return !(
+    a.x + a.w < b.x ||
+    a.x > b.x + b.w ||
+    a.y + a.h < b.y ||
+    a.y > b.y + b.h
+  );
 }
 
-/* CREATE WINDOWS */
+/* generate position with safe-zone protection */
+function getSafePosition() {
+  let tries = 0;
+
+  while (tries < 200) {
+    const x = Math.random() * (window.innerWidth - WIN_W);
+    const y = Math.random() * (window.innerHeight - WIN_H);
+
+    // define safe zone centered inside window
+    const safeZone = {
+      x: x + (WIN_W - SAFE_W) / 2,
+      y: y + (WIN_H - SAFE_H) / 2,
+      w: SAFE_W,
+      h: SAFE_H
+    };
+
+    let collision = placedZones.some(zone => isOverlapping(zone, safeZone));
+
+    if (!collision) {
+      placedZones.push(safeZone);
+      return { x, y };
+    }
+
+    tries++;
+  }
+
+  // fallback (if crowded)
+  return {
+    x: Math.random() * (window.innerWidth - WIN_W),
+    y: Math.random() * (window.innerHeight - WIN_H)
+  };
+}
+
+/* SPAWN WINDOWS */
 function spawnWindows() {
-  const positions = generatePositions(windowsData.length);
+  placedZones = [];
 
   windowsData.forEach((data, i) => {
     setTimeout(() => {
+      const pos = getSafePosition();
+
       const win = document.createElement("div");
       win.className = "window";
 
-      win.style.top = positions[i].top + "px";
-      win.style.left = positions[i].left + "px";
+      win.style.top = pos.y + "px";
+      win.style.left = pos.x + "px";
+      win.style.zIndex = i + 1;
+
+      const buttonHTML = data.link
+        ? `<button onclick="window.open('${data.link}', '_blank')">GO</button>`
+        : `<button disabled>GO</button>`;
+
+      const titleHTML = data.link
+        ? `<a href="#">${data.text}</a>`
+        : `<div>${data.text}</div>`;
 
       win.innerHTML = `
         <div class="titlebar">Local Disk (C:)</div>
         <div class="content">
           <div>Click GO to Access</div>
-          <a href="#">${data.text}</a>
-          <button onclick="window.open('${data.link}', '_blank')">GO</button>
+          ${titleHTML}
+          ${buttonHTML}
         </div>
       `;
 
       document.body.appendChild(win);
-    }, i * 600);
+    }, i * 250);
   });
 
   refreshBtn.style.display = "block";
 }
 
-/* LOADER CLICK */
+/* EVENTS */
 loader.addEventListener("click", () => {
   loader.style.display = "none";
   spawnWindows();
 });
 
-/* REFRESH → CATALOGUE */
 refreshBtn.addEventListener("click", () => {
   document.querySelectorAll(".window").forEach(w => w.remove());
   refreshBtn.style.display = "none";
