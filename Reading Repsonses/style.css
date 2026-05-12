@@ -1,0 +1,224 @@
+/* =========================================
+FILE NAME: style.css
+========================================= */
+
+
+/* =========================================
+FONTS
+========================================= */
+
+@font-face {
+    font-family: 'JMHTypewriterBold';
+    src: url('./jmh-typewriter.bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JMHTypewriterThin';
+    src: url('./jmh-typewriter.thin.ttf') format('truetype');
+}
+
+
+/* =========================================
+RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+BODY
+========================================= */
+
+body {
+
+    background-color: rgb(254, 254, 254);
+
+    color: rgb(15, 15, 15);
+
+    font-family: 'JMHTypewriterThin', monospace;
+
+    line-height: 1.85;
+
+    text-rendering: geometricPrecision;
+
+    -webkit-font-smoothing: antialiased;
+
+    padding-top: 80px;
+    padding-bottom: 120px;
+}
+
+
+/* =========================================
+CONTAINER
+========================================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+
+/* =========================================
+MAIN TITLE
+========================================= */
+
+.main-title {
+
+    font-family: 'JMHTypewriterBold', monospace;
+
+    font-size: 3rem;
+
+    font-weight: normal;
+
+    letter-spacing: 0.03em;
+
+    margin-bottom: 100px;
+}
+
+
+/* =========================================
+WEEK SECTION
+========================================= */
+
+.week-section {
+
+    margin-bottom: 120px;
+}
+
+
+/* =========================================
+WEEK TITLE
+========================================= */
+
+.week-title {
+
+    font-family: 'JMHTypewriterBold', monospace;
+
+    font-size: 1.35rem;
+
+    font-weight: normal;
+
+    line-height: 1.55;
+
+    max-width: 1250px;
+
+    margin-bottom: 36px;
+}
+
+
+/* =========================================
+BODY TEXT
+========================================= */
+
+.response-text {
+
+    font-family: 'JMHTypewriterThin', monospace;
+
+    font-size: 1rem;
+
+    line-height: 1.95;
+
+    max-width: 1150px;
+
+    margin-bottom: 42px;
+}
+
+
+/* =========================================
+QUESTIONS
+========================================= */
+
+.questions {
+
+    margin-top: 12px;
+}
+
+.question {
+
+    font-family: 'JMHTypewriterThin', monospace;
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+
+    max-width: 1100px;
+
+    margin-bottom: 22px;
+
+    padding-left: 28px;
+
+    text-indent: -28px;
+}
+
+.question span {
+
+    font-family: 'JMHTypewriterBold', monospace;
+}
+
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+@media screen and (max-width: 1200px) {
+
+    .container {
+
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .main-title {
+
+        font-size: 2.5rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    body {
+
+        padding-top: 50px;
+    }
+
+    .container {
+
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .main-title {
+
+        font-size: 1.9rem;
+
+        margin-bottom: 70px;
+    }
+
+    .week-title {
+
+        font-size: 1.1rem;
+    }
+
+    .response-text,
+    .question {
+
+        font-size: 0.95rem;
+    }
+
+    .week-section {
+
+        margin-bottom: 90px;
+    }
+}
