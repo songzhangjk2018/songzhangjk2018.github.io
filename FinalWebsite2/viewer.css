@@ -1,0 +1,106 @@
+body {
+
+  margin: 0;
+
+  overflow: hidden;
+
+  background: white;
+
+  display: flex;
+
+  height: 100vh;
+
+  font-family: Arial, sans-serif;
+
+}
+
+/* LEFT SIDE */
+
+#sidePanel {
+
+  width: 420px;
+
+  background: white;
+
+  position: relative;
+
+  border-right: 2px solid black;
+
+}
+
+/* IFRAME */
+
+#viewerFrame {
+
+  flex: 1;
+
+  border: none;
+
+  height: 100vh;
+
+}
+
+/* XP WINDOW */
+
+#popupWindow {
+
+  position: absolute;
+
+  width: 340px;
+
+  background: #ece9d8;
+
+  border: 2px solid black;
+
+  box-shadow: 4px 4px 0px black;
+
+  top: 100px;
+  left: 40px;
+
+  user-select: none;
+
+}
+
+.titlebar {
+
+  background: #3a6ea5;
+
+  color: white;
+
+  padding: 6px;
+
+  font-size: 14px;
+
+  cursor: move;
+
+}
+
+.content {
+
+  padding: 25px;
+
+  text-align: center;
+
+}
+
+.content h2 {
+
+  margin-top: 0;
+
+}
+
+.content p {
+
+  line-height: 1.5;
+
+  font-size: 18px;
+
+}
+
+button {
+
+  margin-top: 20px;
+
+  padding: 8px 18px;
+
+}
